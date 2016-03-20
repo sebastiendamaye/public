@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+###################################################
+#
+#  Author: Sebastien Damaye <sebastien.damaye@gmail.com>
+#  You must first install pngquant: aptitude install pngquant
+#
+###################################################
+
+TEXTDOMAIN=shutter-plugins
+TEXTDOMAINDIR=$SHUTTER_INTL
+PLUGIN_NAME=$"pngquant"
+PLUGIN_SORT=$"Tool"
+PLUGIN_TIP=$"Use pngquant to compress image size"
+PLUGIN_EXT="image/png"
+
+if [[ "${1}" = "name" ]];then
+   	echo "${PLUGIN_NAME}"
+    exit 0
+elif [[ "${1}" = "sort" ]];then
+    echo "${PLUGIN_SORT}"
+    exit 0
+elif [[ "${1}" = "tip" ]];then
+    echo "${PLUGIN_TIP}"
+    exit 0
+elif [[ "${1}" = "ext" ]];then
+    echo "${PLUGIN_EXT}"
+    exit 0
+fi
+
+FILE="${1}"
+#WIDTH="${2}"
+#HEIGHT="${3}"
+#FILEYTPE="${4}"
+#GEO="${2}x${3}"
+
+/usr/bin/pngquant --ext .png --force "${FILE}"
+
+       
+exit 0
