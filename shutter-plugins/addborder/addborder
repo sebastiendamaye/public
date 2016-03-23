@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+###################################################
+#
+#  Author: Sebastien Damaye <sebastien.damaye@gmail.com>
+#  Add 1px black border to image
+#
+###################################################
+
+TEXTDOMAIN=shutter-plugins
+TEXTDOMAINDIR=$SHUTTER_INTL
+PLUGIN_NAME=$"addborder"
+PLUGIN_SORT=$"Tool"
+PLUGIN_TIP=$"Add 1px black border to image"
+PLUGIN_EXT="image/png"
+
+if [[ "${1}" = "name" ]];then
+   	echo "${PLUGIN_NAME}"
+    exit 0
+elif [[ "${1}" = "sort" ]];then
+    echo "${PLUGIN_SORT}"
+    exit 0
+elif [[ "${1}" = "tip" ]];then
+    echo "${PLUGIN_TIP}"
+    exit 0
+elif [[ "${1}" = "ext" ]];then
+    echo "${PLUGIN_EXT}"
+    exit 0
+fi
+
+FILE="${1}"
+#WIDTH="${2}"
+#HEIGHT="${3}"
+#FILEYTPE="${4}"
+#GEO="${2}x${3}"
+
+/usr/bin/convert -border 1x1 -bordercolor "#000000" "${FILE}" "${FILE}"
+
+       
+exit 0
