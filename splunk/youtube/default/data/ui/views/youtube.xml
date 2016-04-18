@@ -1,0 +1,36 @@
+<form script="table_drilldown_url_field.js">
+  <label>youtube videos</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="time" token="TimeRangePicker" searchWhenChanged="true">
+      <label>TimeRange</label>
+      <default>
+        <earliest>@d</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <table id="link">
+        <search>
+          <query>source="*squid*" uri="*www.youtube.com/watch?v=*" | sort _time | youtube uri | table _time clientip uri youtube v</query>
+          <earliest>$TimeRangePicker.earliest$</earliest>
+          <latest>$TimeRangePicker.latest$</latest>
+        </search>
+        <drilldown target="_blank">
+          <link>
+            <![CDATA[
+            https://www.youtube.com/watch?v=$row.v$
+            ]]>
+          </link>
+        </drilldown>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">row</option>
+        <option name="count">30</option>
+        <fields>["_time","clientip","uri","youtube"]</fields>
+      </table>
+    </panel>
+  </row>
+</form>
