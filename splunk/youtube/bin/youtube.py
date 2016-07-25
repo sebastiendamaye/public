@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 #
 # Author: Sebastien Damaye
-# Description: streaming custom search command that shows information about youtube
-#   videos based on squid proxy logs
+# Description: streaming custom search command that shows information about youtube videos based on squid proxy logs
+# Revision: 2
+# Update: 20160724
+#
 # Use as follows:
-# source="*squid*" uri="*www.youtube.com/watch?v=*" | sort _time | youtube uri | table _time clientip uri youtube
+# source="*squid*" uri="*www.youtube.com/watch?v=*" OR source="*squid*" uri="*www.youtube.com/csi_204*docid=*" | sort _time | youtube uri | table _time clientip uri youtube v
 #
 
 import splunk.Intersplunk 
@@ -14,9 +16,16 @@ import urlparse
 import time
 
 def getYoutube(uri):
-    m = re.match(r'^https:\/\/www.youtube.com\/watch\?v=([a-zA-Z0-9_-]+)(&.+)?$', uri)
-    if m:
-        response = urllib2.urlopen('http://youtube.com/get_video_info?video_id=%s' % m.group(1))
+    # youtube (PC format)
+    m1 = re.match(r'^https:\/\/www.youtube.com\/watch\?v=([a-zA-Z0-9_-]+)(&.+)?$', uri)
+    # youtube (Android tablet)
+    m2 = m = re.match(r'^https:\/\/www.youtube.com(.*)&docid=([a-zA-Z0-9_-]+)(&.+)?$', uri)
+    if m1 or m2:
+        if m1:
+            id = m.group(1)
+        else:
+            id = m.group(2)
+        response = urllib2.urlopen('http://youtube.com/get_video_info?video_id=%s' % id)
         html = response.read()
         qs = urlparse.parse_qs(html)
         if 'title' in qs:
