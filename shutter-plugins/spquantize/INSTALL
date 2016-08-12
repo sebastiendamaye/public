@@ -1,2 +1,4 @@
+Install pngquant:
+$ sudo aptitude install pngquant
 Copy directory to:
 /usr/share/shutter/resources/system/plugins/shell/

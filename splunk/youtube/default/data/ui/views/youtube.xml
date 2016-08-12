@@ -13,7 +13,7 @@
     <panel>
       <table id="link">
         <search>
-          <query>source="*squid*" uri="*www.youtube.com/watch?v=*" OR source="*squid*" uri="*www.youtube.com/csi_204*docid=*" | sort _time | youtube uri | table _time clientip uri youtube v</query>
+          <query>source="*squid*" uri="*www.youtube.com/watch?v=*" OR source="*squid*" uri="*www.youtube.com/csi_204*docid=*" | sort _time | youtube uri | table _time clientip youtube uri v docid</query>
           <earliest>$TimeRangePicker.earliest$</earliest>
           <latest>$TimeRangePicker.latest$</latest>
         </search>
