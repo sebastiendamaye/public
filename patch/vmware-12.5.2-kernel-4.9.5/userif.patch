@@ -1,0 +1,20 @@
+--- userif.c	2017-01-30 09:31:34.020775521 +0100
++++ userif.c	2017-01-30 09:33:08.538221458 +0100
+@@ -113,12 +113,16 @@
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++     retval = get_user_pages(addr, 1, 0, &page, NULL);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    retval = get_user_pages(addr, 1, 1, 0, &page, NULL);
+ #else
+    retval = get_user_pages(current, current->mm, addr,
+                            1, 1, 0, &page, NULL);
+ #endif
++#endif
+    up_read(&current->mm->mmap_sem);
+ 
+    if (retval != 1) {
+
