@@ -1,0 +1,19 @@
+--- hostif.c	2017-01-30 09:52:50.753992583 +0100
++++ hostif.c	2017-01-30 09:54:28.758383498 +0100
+@@ -1162,12 +1162,16 @@
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 0)
++   retval = get_user_pages((unsigned long)uvAddr, numPages, 0, ppages, NULL);
++#else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
+    retval = get_user_pages((unsigned long)uvAddr, numPages, 0, 0, ppages, NULL);
+ #else
+    retval = get_user_pages(current, current->mm, (unsigned long)uvAddr,
+                            numPages, 0, 0, ppages, NULL);
+ #endif
++#endif
+    up_read(&current->mm->mmap_sem);
+ 
+    return retval != numPages;
