@@ -1,13 +1,18 @@
 #!/bin/env python
+###
+# AUTHOR:      Captain Pilou (https://www.youtube.com/channel/UCSS8dwwaBDS6-hRnYo2yVDA)
+# REVISION:    2
+# LAST MODIF:  2018-12-30
+# DESCRIPTION: This program takes a CSV file as parameter (Taranis telemetry logs) and
+#              creates a GPX file based on GPS coords, altitude and date/time
+
+import argparse
 import sys
 
-def main():
-    if(len(sys.argv)<2):
-        print("CSV file missing")
-        sys.exit(0)
-
+def main(args):
     gpx = open("mytrace.gpx","w")
-    csv = open(sys.argv[1],"r")
+    csv = open(args.csv,"r")
+    relativealt = 99999
     
     ### GPX trace header
     gpx.write('<?xml version="1.0" encoding="UTF-8" standalone="no" ?>\n')
@@ -30,14 +35,23 @@ def main():
 
         # normal lines (not header)
         else:
-            gps = dt[igps].split(" ")
+            #if GPS field is empty, take previous GPS entry
+            if dt[igps]:
+                gps = dt[igps].split(" ")
+            
+            # if relativealt is set
+            if args.relativealt:
+                if relativealt == 99999:
+                    relativealt = int(dt[ialt])
+            else:
+                relativealt = 0
+
             gpx.write('    <wpt lat="%s" lon="%s">\n' % (gps[0], gps[1]))
-            gpx.write('        <ele>%s</ele>\n' % dt[ialt])
+            gpx.write('        <ele>%s</ele>\n' % str(int(dt[ialt])-relativealt))
             gpx.write('        <time>%sT%sZ</time>\n' % (dt[idate], dt[itime].split(".")[0]))
             gpx.write('        <name>P%s</name>\n' % numl)
             gpx.write('        <sym>empty</sym>\n')
             gpx.write('    </wpt>\n')
-
 
         numl += 1
 
@@ -47,5 +61,14 @@ def main():
     csv.close()
     gpx.close()
 
+def args():
+    parser = argparse.ArgumentParser(description='Extracts GPS coords from Taranis CSV log file to create a GPX file.')
+    parser.add_argument('csv',
+                    help='input file (Taranis CSV log file)')
+    parser.add_argument('-r', '--relativealt', action='store_true',
+                    help='consider altitude as relative (1st known altitude considered as zero)')
+    args = parser.parse_args()
+    main(args)
+
 if __name__ == "__main__":
-    main()
+    args()
