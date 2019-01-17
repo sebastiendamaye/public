@@ -1,0 +1,9 @@
+[Unit]
+Description=camip at startup
+After=network.target auditd.service
+
+[Service]
+ExecStart=/data/script/camip/camip.sh
+
+[Install]
+WantedBy=default.target
