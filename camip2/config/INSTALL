@@ -16,5 +16,5 @@ If mac is "6d:0a:95:9d:68:16", camid will be "6d0a959d6816"
 Add cron camip2 jobs:
 	# cron-jobs for campip2
 	MAILTO=root
-	*/5 * * * *	root cp -u /mnt/cifs/*.mp4 /data/script/camip2/camipmpg/ > /dev/null 2>&1
-	58 23 * * *	root /data/script/camip2/config/camip2.sh
+	*/5 * * * *	pilou cp -u /mnt/cifs/*.mp4 /data/script/camip2/camipmpg/ > /dev/null 2>&1
+	58 4 * * *	pilou /data/script/camip2/config/camip2.sh

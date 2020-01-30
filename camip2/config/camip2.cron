@@ -1,0 +1,6 @@
+# cron-jobs for campip2
+
+MAILTO=root
+
+*/5 * * * *	pilou cp -u /mnt/cifs/*.mp4 /data/script/camip2/camipmpg/ > /dev/null 2>&1
+58 4 * * *	pilou /data/script/camip2/config/camip2.sh
