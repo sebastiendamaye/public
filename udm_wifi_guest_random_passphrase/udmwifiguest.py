@@ -66,7 +66,8 @@ WIFI_PASSPHRASE = generate_password(nwords, wordlist)
 
 # Update wifi passphrase
 data = { "x_passphrase": WIFI_PASSPHRASE }
-headers["x-csrf-token"] = csrf_token
+if 'x-csrf-toen' in headers:
+    headers["x-csrf-token"] = csrf_token
 r = s.put('https://{}/proxy/network/api/s/default/rest/wlanconf/{}'.format(HOST, GUEST_WLAN_ID),
     json=data, headers=headers, verify=False, timeout=1)
 #print(r.text)
