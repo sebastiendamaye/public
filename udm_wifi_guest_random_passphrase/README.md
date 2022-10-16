@@ -22,3 +22,26 @@ If you have a separate server on the same network, where the script can be run, 
   exit 0
 
 On the next UDM reboot, any files added into the cronjobs folder (or modifications to existing files) will get loaded into cron.d.
+
+4. (optional) If you want to send the wifi file over SSH to a remote location, you'll need more steps:
+
+*generate a SSH key in `/mnt/data/udmwifiguest/ssh` as follows:
+
+  mkdir /mnt/data/udmwifiguest/ssh/
+  cd /mnt/data/udmwifiguest/ssh/
+  dropbearkey -f id_rsa -t rsa
+  chmod 600 id_rsa
+
+*Copy the public key to remote location on ~/.ssh/authorized_keys
+
+*Manual connect once to your remote server, to add it to the `known_hosts` file.
+
+*Make sure this `known_hosts` file will be copied at each reboot by creating `30-copy-known-hosts` in `/mnt/data/on_boot.d`:
+
+  #!/bin/sh
+  cp /mnt/data/udmwifiguest/ssh/known_hosts /root/.ssh/
+  exit 0
+
+*create `/mnt/data/cronjobs/udmwifiguest_transfer` with the following contents:
+
+1 12 * * * /usr/bin/scp -i /mnt/data/udmwifiguest/ssh/id_rsa -P <whateversshport> /mnt/data/udmwifiguest/wifi user@remoteip:/remote/location
