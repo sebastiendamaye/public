@@ -29,7 +29,7 @@ On the next UDM reboot, any files added into the cronjobs folder (or modificatio
 
 5. (optional) If you want to send the wifi file over SSH to a remote location, you'll need more steps:
 
-    1. generate a SSH key in `/mnt/data/udmwifiguest/ssh` as follows:
+* generate a SSH key in `/mnt/data/udmwifiguest/ssh` as follows:
 
 ```
 mkdir /mnt/data/udmwifiguest/ssh/
@@ -38,11 +38,11 @@ dropbearkey -f id_rsa -t rsa
 chmod 600 id_rsa
 ```
 
-    2. Copy the public key to remote location on `~/.ssh/authorized_keys`
+* Copy the public key to remote location on `~/.ssh/authorized_keys`
 
-    3. Manual connect once to your remote server, to add it to the `known_hosts` file.
+* Manual connect once to your remote server, to add it to the `known_hosts` file.
 
-    4. Make sure this `known_hosts` file will be copied at each reboot by creating `30-copy-known-hosts` in `/mnt/data/on_boot.d`:
+* Make sure this `known_hosts` file will be copied at each reboot by creating `30-copy-known-hosts` in `/mnt/data/on_boot.d`:
 
 ```
 #!/bin/sh
@@ -50,7 +50,7 @@ cp /mnt/data/udmwifiguest/ssh/known_hosts /root/.ssh/
 exit 0
 ```
 
-    5. create `/mnt/data/cronjobs/udmwifiguest_transfer` with the following contents:
+* create `/mnt/data/cronjobs/udmwifiguest_transfer` with the following contents:
 
 ```
 1 12 * * * /usr/bin/scp -i /mnt/data/udmwifiguest/ssh/id_rsa -P <whateversshport> /mnt/data/udmwifiguest/wifi user@remoteip:/remote/location
