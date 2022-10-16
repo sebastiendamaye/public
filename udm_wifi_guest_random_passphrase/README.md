@@ -23,7 +23,7 @@ If you have a separate server on the same network, where the script can be run, 
 cp /mnt/data/cronjobs/* /etc/cron.d/
 /etc/init.d/crond restart
 exit 0
-``
+```
 
 On the next UDM reboot, any files added into the cronjobs folder (or modifications to existing files) will get loaded into cron.d.
 
