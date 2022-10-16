@@ -12,14 +12,18 @@ If you have a separate server on the same network, where the script can be run, 
 
 2. Create a folder `/mnt/data/cronjobs` and in that folder create a file for each cron job you want to run. We will only run 1 cronjob (udmwifiguest), so our file will be `/mnt/data/cronjobs/wifiguest` and will have the below contents:
 
-    0 12 * * * /usr/bin/python3 /mnt/data/udmwifiguest/udmwifiguest.py
+```
+0 12 * * * /usr/bin/python3 /mnt/data/udmwifiguest/udmwifiguest.py
+```
 
 3. Now in `/mnt/data/on_boot.d/`, create an executable file called `20-add-cronjobs.sh` with the following contents:
 
-    #!/bin/sh
-    cp /mnt/data/cronjobs/* /etc/cron.d/
-    /etc/init.d/crond restart
-    exit 0
+```
+#!/bin/sh
+cp /mnt/data/cronjobs/* /etc/cron.d/
+/etc/init.d/crond restart
+exit 0
+``
 
 On the next UDM reboot, any files added into the cronjobs folder (or modifications to existing files) will get loaded into cron.d.
 
@@ -27,10 +31,12 @@ On the next UDM reboot, any files added into the cronjobs folder (or modificatio
 
 * generate a SSH key in `/mnt/data/udmwifiguest/ssh` as follows:
 
-    mkdir /mnt/data/udmwifiguest/ssh/
-    cd /mnt/data/udmwifiguest/ssh/
-    dropbearkey -f id_rsa -t rsa
-    chmod 600 id_rsa
+```
+mkdir /mnt/data/udmwifiguest/ssh/
+cd /mnt/data/udmwifiguest/ssh/
+dropbearkey -f id_rsa -t rsa
+chmod 600 id_rsa
+```
 
 * Copy the public key to remote location on `~/.ssh/authorized_keys`
 
@@ -38,10 +44,15 @@ On the next UDM reboot, any files added into the cronjobs folder (or modificatio
 
 * Make sure this `known_hosts` file will be copied at each reboot by creating `30-copy-known-hosts` in `/mnt/data/on_boot.d`:
 
-    #!/bin/sh
-    cp /mnt/data/udmwifiguest/ssh/known_hosts /root/.ssh/
-    exit 0
+```
+#!/bin/sh
+cp /mnt/data/udmwifiguest/ssh/known_hosts /root/.ssh/
+exit 0
+```
 
 * create `/mnt/data/cronjobs/udmwifiguest_transfer` with the following contents:
 
-    1 12 * * * /usr/bin/scp -i /mnt/data/udmwifiguest/ssh/id_rsa -P <whateversshport> /mnt/data/udmwifiguest/wifi user@remoteip:/remote/location
+```
+1 12 * * * /usr/bin/scp -i /mnt/data/udmwifiguest/ssh/id_rsa -P <whateversshport> /mnt/data/udmwifiguest/wifi user@remoteip:/remote/location
+```
+
