@@ -10,13 +10,13 @@ If you have a separate server on the same network, where the script can be run, 
 
 2. Download udmwifiguest in `/mnt/data/udmwifiguest` and make sure all files are at the root of this folder
 
-2. Create a folder `/mnt/data/cronjobs` and in that folder create a file for each cron job you want to run. We will only run 1 cronjob (udmwifiguest), so our file will be `/mnt/data/cronjobs/wifiguest` and will have the below contents:
+3. Create a folder `/mnt/data/cronjobs` and in that folder create a file for each cron job you want to run. We will only run 1 cronjob (udmwifiguest), so our file will be `/mnt/data/cronjobs/wifiguest` and will have the below contents:
 
 ```
 0 12 * * * /usr/bin/python3 /mnt/data/udmwifiguest/udmwifiguest.py
 ```
 
-3. Now in `/mnt/data/on_boot.d/`, create an executable file called `20-add-cronjobs.sh` with the following contents:
+4. Now in `/mnt/data/on_boot.d/`, create an executable file called `20-add-cronjobs.sh` with the following contents:
 
 ```
 #!/bin/sh
@@ -27,9 +27,9 @@ exit 0
 
 On the next UDM reboot, any files added into the cronjobs folder (or modifications to existing files) will get loaded into cron.d.
 
-4. (optional) If you want to send the wifi file over SSH to a remote location, you'll need more steps:
+5. (optional) If you want to send the wifi file over SSH to a remote location, you'll need more steps:
 
-* generate a SSH key in `/mnt/data/udmwifiguest/ssh` as follows:
+  1. generate a SSH key in `/mnt/data/udmwifiguest/ssh` as follows:
 
 ```
 mkdir /mnt/data/udmwifiguest/ssh/
@@ -38,11 +38,11 @@ dropbearkey -f id_rsa -t rsa
 chmod 600 id_rsa
 ```
 
-* Copy the public key to remote location on `~/.ssh/authorized_keys`
+  2. Copy the public key to remote location on `~/.ssh/authorized_keys`
 
-* Manual connect once to your remote server, to add it to the `known_hosts` file.
+  3. Manual connect once to your remote server, to add it to the `known_hosts` file.
 
-* Make sure this `known_hosts` file will be copied at each reboot by creating `30-copy-known-hosts` in `/mnt/data/on_boot.d`:
+  4. Make sure this `known_hosts` file will be copied at each reboot by creating `30-copy-known-hosts` in `/mnt/data/on_boot.d`:
 
 ```
 #!/bin/sh
@@ -50,7 +50,7 @@ cp /mnt/data/udmwifiguest/ssh/known_hosts /root/.ssh/
 exit 0
 ```
 
-* create `/mnt/data/cronjobs/udmwifiguest_transfer` with the following contents:
+  5. create `/mnt/data/cronjobs/udmwifiguest_transfer` with the following contents:
 
 ```
 1 12 * * * /usr/bin/scp -i /mnt/data/udmwifiguest/ssh/id_rsa -P <whateversshport> /mnt/data/udmwifiguest/wifi user@remoteip:/remote/location
